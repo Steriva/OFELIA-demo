@@ -169,3 +169,15 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Mesh
+*.msh
+
+# Results
+01_NeutronicsOnly/build_xml
+02_ThermalOnly/build_xml
+03_MPmodel/build_xml
+
+01_NeutronicsOnly/results_*
+02_ThermalOnly/results_*
+03_MPmodel/results_*
