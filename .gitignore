@@ -172,6 +172,7 @@ cython_debug/
 
 # Mesh
 *.msh
+*.geo
 
 # Results
 01_NeutronicsOnly/build_xml
@@ -181,3 +182,7 @@ cython_debug/
 01_NeutronicsOnly/results_*
 02_ThermalOnly/results_*
 03_MPmodel/results_*
+
+01_NeutronicsOnly/pictures
+
+prova_class_openmcmodel
