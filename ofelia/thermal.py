@@ -240,9 +240,7 @@ class thermal_solver():
 
     def solve(self, power_fun : list, power_integral): # power_fun should be a callable interpolant
 
-        
         Qheat = Function(self.Qn)
-        
         
         # set power density
         for idx, regionI in enumerate(self.regions): 
@@ -250,7 +248,6 @@ class thermal_solver():
             points_coordinates = self.Qn.tabulate_dof_coordinates()                                   #get points coordinates
             Qheat.x.array[cells] = power_fun[idx](points_coordinates[cells].T)                       #assign heat source
         
-        #TO CHECK
         if self.type_of_symmetry == "cyl":
             Q_norm_factor = power_integral/assemble_scalar(form(Qheat * np.abs(self.r_) * self.dx))
         else:
@@ -258,15 +255,11 @@ class thermal_solver():
         
         self.q.x.array[:] = Q_norm_factor*Qheat.x.array
 
-        #print(assemble_scalar(form(self.q*self.dx)))
-
         # Updating the rhs vector
         with self.b.localForm() as loc:
             loc.set(0)
         fem.petsc.assemble_vector(self.b, self.L)
         
-        
-
         # add dirichled bc if present
         # --- new --- rb
         if len(self.dirichlet_bcs) > 0:
@@ -276,7 +269,6 @@ class thermal_solver():
             fem.petsc.set_bc(self.b, self.dirichlet_bcs)
         # --- end new --- rb
             
-
         # Solving the linear system
         self.solver.solve(self.b, self.solution.vector)
         self.solution.x.scatter_forward()

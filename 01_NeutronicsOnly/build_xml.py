@@ -59,17 +59,16 @@ for div in range(n_div):
         fuel_cell=openmc.Cell(fill=mat_dict['fuel'][div], region = -Fuel_or & +bot_active & -z_planes[div], name='fuelzone' + str(div))
         water_cell=openmc.Cell(fill=mat_dict['coolant'][div], region=+Clad_or & +west_boundary & -east_boundary  & +south_boundary & -north_boundary  & +bot_active & -z_planes[div], name='waterzone' + str(div))
         
-    elif div==(n_div-1):
+    elif div==(n_div-1): # top zone
         fuel_cell=openmc.Cell(fill=mat_dict['fuel'][div], region = -Fuel_or & +z_planes[div-1] & -top_active, name='fuelzone' + str(div))
         water_cell=openmc.Cell(fill=mat_dict['coolant'][div], region=+Clad_or & +west_boundary & -east_boundary  & +south_boundary & -north_boundary  & +z_planes[div-1] & -top_active, name='waterzone' + str(div))
 
-    else:
+    else: # center zone
         fuel_cell=openmc.Cell(fill=mat_dict['fuel'][div], region = -Fuel_or & +z_planes[div-1] & -z_planes[div], name='fuelzone' + str(div))
         water_cell=openmc.Cell(fill=mat_dict['coolant'][div], region=+Clad_or & +west_boundary & -east_boundary  & +south_boundary & -north_boundary  & +z_planes[div-1] & -z_planes[div], name='waterzone' + str(div))
 
     cells_list.append(fuel_cell)
     cells_list.append(water_cell)
-
 
 
 # Adding Clad and Helium which are not updated in temperature
@@ -166,7 +165,7 @@ tallies.export_to_xml(path_to_run+'tallies.xml')
 p_xz = openmc.Plot()
 p_xz.basis = 'xz'
 #p_xz.origin(0.0 , 2.0, 0.0) #plot xz centrato in y=0
-p_xz.filename = './pictures/pin3D_xz'
+p_xz.filename = '../../pictures/pin3D_xz'
 p_xz.width = (2, 400)
 p_xz.pixels = (2000, 2000)
 p_xz.color_by = 'material'
@@ -175,7 +174,7 @@ p_xz.color_by = 'material'
 p_xy = openmc.Plot()
 p_xy.basis = 'xy'
 #p_xy.origin(0.0 , 0.0, 2.0) #plot xy centrato in z=0
-p_xy.filename = './pictures/pin3D_xy'
+p_xy.filename = '../../pictures/pin3D_xy'
 #p_xy.width = (-3, 3)
 p_xy.pixels = (2000, 2000)
 p_xy.color_by = 'material'
@@ -183,4 +182,4 @@ p_xy.color_by = 'material'
 plots = openmc.Plots([p_xy, p_xz])
 plots.export_to_xml(path_to_run+'plots.xml')
 
-# openmc.plot_geometry()
+#openmc.plot_geometry()

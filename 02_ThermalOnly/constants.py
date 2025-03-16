@@ -1,28 +1,7 @@
 import numpy as np
 import os
 
-path_to_run = './build_xml/it0/'
-if not os.path.exists(path_to_run):
-    os.makedirs(path_to_run)
-
-### MC settings
-s1_val = 750 # initial particle population
-batches = 1000 # number of cycles
-inactive = 500
 n_div = 8 #8 # Number of axial divisions
-Power = 65e3 # W
-initialUniformSource = False
-shannonEntropy = False
-meshSize = 100
-
-tallyDict = {'integral': "Integral Quantities",
-             'mesh_xy': "Mesh xy tally",
-             'mesh_z': "Mesh z tally",
-             'spectrum': "Flux Spectrum"}
-
-# Picard settings
-maxIter = 10 #10#25
-tol   = 0.05
 
 # Geometrical and physical parameters
 l_active=366 #  Active length (cm)

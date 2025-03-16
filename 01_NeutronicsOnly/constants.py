@@ -6,7 +6,7 @@ if not os.path.exists(path_to_run):
     os.makedirs(path_to_run)
 
 ### MC settings
-s1_val = 750 # initial particle population
+s1_val = 3000 # initial particle population
 batches = 1000 # number of cycles
 inactive = 500
 n_div = 8 #8 # Number of axial divisions
