@@ -184,5 +184,6 @@ cython_debug/
 03_MPmodel/results_*
 
 01_NeutronicsOnly/pictures
+02_ThermalOnly/*.png
 
 prova_class_openmcmodel
