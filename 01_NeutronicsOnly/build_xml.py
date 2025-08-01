@@ -182,4 +182,4 @@ p_xy.color_by = 'material'
 plots = openmc.Plots([p_xy, p_xz])
 plots.export_to_xml(path_to_run+'plots.xml')
 
-#openmc.plot_geometry()
+openmc.plot_geometry()

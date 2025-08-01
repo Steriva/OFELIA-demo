@@ -34,8 +34,7 @@ mamba install openmc
 Then, install dolfinx (version 0.6.0), downgrade setuptools to 62.0.0, and install the remaining packages
 ```bash
 conda install fenics-dolfinx=0.6.0 petsc mpich pyvista tqdm
-python -m pip install setuptools==62.0.0
-python -m pip install pyXSteam
+python -m pip install setuptools==62.0.0 pyXSteam
 ```
 
 The path to the XS can be set in the python code as
